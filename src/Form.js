@@ -20,9 +20,10 @@ const Form = (props) => {
       <h1>Pizza Form</h1>
       <form id='pizza-form' onSubmit={onSubmit}>
         <div>
-            <label id='name-input'>
+            <label >
             Name:
             <input  
+                id='name-input'
                 type="text"
                 name="name"
                 onChange={onChange}
@@ -31,9 +32,9 @@ const Form = (props) => {
         </div>
 
         <div>
-            <label id="size-dropdown">
+            <label>
             Select a Size:
-            <select name="size" onChange={onChange} value={values.size}>
+            <select name="size" onChange={onChange} value={values.size} id="size-dropdown">
                 <option value="" disabled>Select an option</option>
                 <option value="small">Small</option>
                 <option value="medium">Medium</option>
@@ -104,7 +105,7 @@ const Form = (props) => {
             />
           </label>
         <div>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" id='order-button' />
         </div>
       </form>
     </div>

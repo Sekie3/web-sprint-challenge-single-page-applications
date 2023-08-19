@@ -27,15 +27,16 @@ const App = () => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initalFormErrors);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log("handleSubmit is being called");
-    axios.post(`https://reqres.in/api/users`, formValues)
-      .then(res => {
-        
-      })
-      .catch(err => console.log(err))
-      console.log(formValues);
-  }
+    
+    try {
+      const response = await axios.post(`https://reqres.in/api/orders`, formValues);
+      console.log("Response:", response.data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   const validate = (name, value) => {
     yup.reach(FormSchema, name)
@@ -53,8 +54,8 @@ const App = () => {
   return (
     <div>
       <nav>
-        <Link to="/">Home Screen</Link>&nbsp;
-        <Link to="/pizza">Order Pizza</Link>&nbsp;
+        <Link to="/" >Home Screen</Link>&nbsp;
+        <Link to="/pizza" id='order-pizza'>Order Pizza</Link>&nbsp;
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
